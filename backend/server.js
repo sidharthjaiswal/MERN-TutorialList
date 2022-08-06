@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const db = require("./models/index.js");
+
 var corsOptions = {
     origin: "http://localhost:8081"
 };
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to sidh's application." });
 });
 // set port, listen for requests
+require("./routes/routes.js")(app);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
